@@ -1,7 +1,24 @@
-import React from 'react'
+import React from 'react';
+import { useState, useEffect } from 'react';
+
+import getToken from './service/getToken';
 
 const App = (): JSX.Element => {
-    return <div>songsite</div>
-}
+    const [token, setToken] = useState('');
 
-export default App
+    useEffect(() => {
+        const authorize = async (): Promise<void> => {
+            const tokenDetails = await getToken();
+            setToken(tokenDetails.access_token);
+            setTimeout(() => {
+                setToken('');
+            }, tokenDetails.expires_in * 1000);
+        };
+
+        authorize();
+    }, []);
+
+    return <div>songsite</div>;
+};
+
+export default App;
