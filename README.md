@@ -2,5 +2,5 @@
 
 This is one of my side project using TypeScript and Spotify API. 
 
-**Note: the README file will be updated when I complete the project!**
+**Note: The project is being built! Many stuffs will be added in the future!**
 
