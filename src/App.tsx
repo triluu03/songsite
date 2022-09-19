@@ -1,14 +1,14 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 
-import getToken from './service/getToken';
+import authorizeService from './service/authorizeService';
 
 const App = (): JSX.Element => {
     const [token, setToken] = useState('');
 
     useEffect(() => {
         const authorize = async (): Promise<void> => {
-            const tokenDetails = await getToken();
+            const tokenDetails = await authorizeService.getToken();
             setToken(tokenDetails.access_token);
             setTimeout(() => {
                 setToken('');
