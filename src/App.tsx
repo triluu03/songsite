@@ -1,24 +1,29 @@
 import React from 'react';
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
+import { useAppDispatch, useAppSelector } from './hooks';
 
-import authorizeService from './service/authorizeService';
+import { authorize } from './reducers/tokenReducer';
+import { searchAnything } from './reducers/searchReducer';
 
 const App = (): JSX.Element => {
-    const [token, setToken] = useState('');
-
+    const dispatch = useAppDispatch();
     useEffect(() => {
-        const authorize = async (): Promise<void> => {
-            const tokenDetails = await authorizeService.getToken();
-            setToken(tokenDetails.access_token);
-            setTimeout(() => {
-                setToken('');
-            }, tokenDetails.expires_in * 1000);
-        };
+        dispatch(authorize());
+    }, [dispatch]);
 
-        authorize();
-    }, []);
+    const token: string = useAppSelector((state) => state.token);
 
-    return <div>songsite</div>;
+    return (
+        <div>
+            <button
+                onClick={() =>
+                    dispatch(searchAnything('artist', 'Adele', token))
+                }
+            >
+                click
+            </button>
+        </div>
+    );
 };
 
 export default App;

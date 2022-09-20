@@ -1,25 +1,26 @@
 import {
-    AnyAction,
     createSlice,
     PayloadAction,
     ThunkAction,
+    AnyAction,
 } from '@reduxjs/toolkit';
 
 import { RootState } from '../store';
 
 import searchService from '../service/searchService';
+import { SearchType } from '../service/searchService';
 
 // Define a type for slice state
-type SearchState = Array<object>;
+type SearchState = object;
 // Define the initial state using that type
-const initialState: SearchState = [];
+const initialState: SearchState = {};
 
 // Reducer Slice
 const searchSlice = createSlice({
     name: 'searchValues',
     initialState,
     reducers: {
-        setSearchValue(state, action: PayloadAction<Array<object>>) {
+        setSearchValue(state, action: PayloadAction<object>) {
             return action.payload;
         },
     },
@@ -28,9 +29,13 @@ const searchSlice = createSlice({
 export const { setSearchValue } = searchSlice.actions;
 export default searchSlice.reducer;
 
-// export const searchAnything = (type: string, query: string, token: string): ThunkAction<void, RootState, unknown, AnyAction> => {
-//     return async (dispatch) => {
-//         const searchReponse = await searchService.searchByAny(type, query, token)
-
-//     }
-// }
+export const searchAnything = (
+    type: SearchType,
+    query: string,
+    token: string
+): ThunkAction<void, RootState, unknown, AnyAction> => {
+    return async (dispatch) => {
+        const response = await searchService.searchByAny(type, query, token);
+        dispatch(setSearchValue(response));
+    };
+};

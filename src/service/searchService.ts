@@ -1,6 +1,7 @@
 import axios from 'axios';
 
-type SearchType =
+// Define types of the "type" parameter in search
+export type SearchType =
     | 'album'
     | 'artist'
     | 'playlist'
@@ -8,7 +9,8 @@ type SearchType =
     | 'show'
     | 'episode';
 
-type SearchReturnedValue = {
+// the response data config in search
+type ResponseData = {
     href: string;
     items: Array<object>;
     limit: number;
@@ -18,6 +20,39 @@ type SearchReturnedValue = {
     total: number;
 };
 
+type AlbumResponse = {
+    albums: ResponseData;
+};
+
+type PlaylistResponse = {
+    playlists: ResponseData;
+};
+
+type TrackResponse = {
+    tracks: ResponseData;
+};
+
+type ShowResponse = {
+    shows: ResponseData;
+};
+
+type EpisodeResponse = {
+    episodes: ResponseData;
+};
+
+type ArtistResponse = {
+    artists: ResponseData;
+};
+
+type SearchReturnedValue =
+    | AlbumResponse
+    | PlaylistResponse
+    | ArtistResponse
+    | TrackResponse
+    | ShowResponse
+    | EpisodeResponse;
+
+// Search Function
 const baseUrl: string = 'https://api.spotify.com/v1/search';
 
 const searchByAny = async (
