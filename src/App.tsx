@@ -2,14 +2,18 @@ import React from 'react';
 import { useEffect, useState } from 'react';
 import { useAppDispatch, useAppSelector } from './hooks';
 
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+
 import { ThemeProvider } from '@mui/material';
 import theme from './theme';
 
 import { authorize } from './reducers/tokenReducer';
 // import { searchAnything } from './reducers/searchReducer';
 
-import TypeSelect from './components/TypeSelect';
 import Navbar from './components/Navbar';
+import About from './components/About';
+import TypeSelect from './components/TypeSelect';
+import Credits from './components/Credits';
 
 const App = (): JSX.Element => {
     const dispatch = useAppDispatch();
@@ -22,10 +26,19 @@ const App = (): JSX.Element => {
     // const token: string = useAppSelector((state) => state.token);
 
     return (
-        <ThemeProvider theme={theme}>
-            <Navbar />
-            <TypeSelect setSearch={setSearchType} />
-        </ThemeProvider>
+        <BrowserRouter>
+            <ThemeProvider theme={theme}>
+                <Navbar />
+                <Routes>
+                    <Route path='/' element={<About />} />
+                    <Route
+                        path='/search'
+                        element={<TypeSelect setSearch={setSearchType} />}
+                    />
+                    <Route path='/credits' element={<Credits />} />
+                </Routes>
+            </ThemeProvider>
+        </BrowserRouter>
     );
 };
 

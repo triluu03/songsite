@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 import { Typography, Slide, AppBar, Toolbar, Button } from '@mui/material';
 import { useScrollTrigger } from '@mui/material';
 
@@ -17,6 +19,13 @@ const HideOnScroll = ({ children }: Props): JSX.Element => {
 };
 
 const Navbar = (): JSX.Element => {
+    const styles = {
+        link: {
+            textDecoration: 'none',
+            color: 'white',
+        },
+    };
+
     return (
         <HideOnScroll>
             <AppBar position='sticky' color='secondary' sx={{ width: '100vw' }}>
@@ -36,7 +45,9 @@ const Navbar = (): JSX.Element => {
                         size='large'
                         sx={{ fontSize: '1.25em' }}
                     >
-                        <b>About</b>
+                        <Link to='/' style={styles.link}>
+                            <b>About</b>
+                        </Link>
                     </Button>
                     <Button
                         color='inherit'
@@ -44,7 +55,9 @@ const Navbar = (): JSX.Element => {
                         size='large'
                         sx={{ fontSize: '1.25em' }}
                     >
-                        <b>Search</b>
+                        <Link to='/search' style={styles.link}>
+                            <b>Search</b>
+                        </Link>
                     </Button>
                     <Button
                         color='inherit'
@@ -52,7 +65,9 @@ const Navbar = (): JSX.Element => {
                         size='large'
                         sx={{ mr: '2.5%', fontSize: '1.25em' }}
                     >
-                        <b>Credits</b>
+                        <Link to='/credits' style={styles.link}>
+                            <b>Credits</b>
+                        </Link>
                     </Button>
                 </Toolbar>
             </AppBar>
