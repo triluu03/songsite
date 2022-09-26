@@ -1,15 +1,11 @@
-import { Autocomplete, Box, TextField } from '@mui/material';
+import { Box, Button, Typography } from '@mui/material';
+import React from 'react';
 
-const TypeSelect = (setSearch: any): JSX.Element => {
-    const options: Array<string> = [
-        'album',
-        'artist',
-        'playlist',
-        'track',
-        'show',
-        'episode',
-    ];
+type Props = {
+    setSearch: React.Dispatch<React.SetStateAction<string>>;
+};
 
+const TypeSelect = ({ setSearch }: Props): JSX.Element => {
     return (
         <Box
             sx={{
@@ -22,23 +18,83 @@ const TypeSelect = (setSearch: any): JSX.Element => {
                 alignItems: 'center',
             }}
         >
-            <Autocomplete
-                options={options}
-                sx={{ width: 600, height: 200 }}
-                renderInput={(params) => (
-                    <TextField
-                        {...params}
-                        placeholder='Choose your search type'
-                        color='info'
-                        variant='standard'
-                        fullWidth={true}
-                        sx={{
-                            input: { color: 'white', fontSize: '3em' },
-                        }}
-                    />
-                )}
-                color='primary.contrastText'
-            />
+            <Typography color='info.main' variant='h3' fontSize='4em'>
+                Choose your search type!
+            </Typography>
+            <Box
+                sx={{
+                    display: 'flex',
+                    flexDirection: 'row',
+                    justifyContent: 'center',
+                    width: '60%',
+                    mt: '2%',
+                }}
+            >
+                <Button
+                    size='large'
+                    color='secondary'
+                    variant='outlined'
+                    sx={{ m: '2%', fontSize: '1.25em' }}
+                    onClick={() => setSearch('album')}
+                >
+                    Album
+                </Button>
+                <Button
+                    size='large'
+                    color='secondary'
+                    variant='outlined'
+                    sx={{ m: '2%', fontSize: '1.25em' }}
+                    onClick={() => setSearch('artist')}
+                >
+                    Artist
+                </Button>
+                <Button
+                    size='large'
+                    color='secondary'
+                    variant='outlined'
+                    sx={{ m: '2%', fontSize: '1.25em' }}
+                    onClick={() => setSearch('playlist')}
+                >
+                    Playlist
+                </Button>
+            </Box>
+            <Box
+                sx={{
+                    display: 'flex',
+                    flexDirection: 'row',
+                    justifyContent: 'center',
+                    width: '60%',
+                    mb: '15%',
+                }}
+            >
+                <Button
+                    size='large'
+                    color='secondary'
+                    variant='outlined'
+                    sx={{ m: '2%', fontSize: '1.25em' }}
+                    onClick={() => setSearch('track')}
+                >
+                    Track
+                </Button>
+                <Button
+                    size='large'
+                    color='secondary'
+                    variant='outlined'
+                    sx={{ m: '2%', fontSize: '1.25em' }}
+                    onClick={() => setSearch('show')}
+                >
+                    Show
+                </Button>
+                <Button
+                    size='large'
+                    color='secondary'
+                    variant='outlined'
+                    sx={{ m: '2%', fontSize: '1.25em' }}
+                    onClick={() => setSearch('episode')}
+                >
+                    Episode
+                </Button>
+            </Box>
         </Box>
     );
 };
