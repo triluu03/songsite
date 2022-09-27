@@ -10,7 +10,7 @@ export type SearchType =
     | 'episode';
 
 // the response data config in search
-type ResponseData = {
+export type ResponseData = {
     href: string;
     items: Array<object>;
     limit: number;
@@ -20,37 +20,15 @@ type ResponseData = {
     total: number;
 };
 
-type AlbumResponse = {
-    albums: ResponseData;
+export type SearchReturnedValue = {
+    [type in
+        | 'albums'
+        | 'artists'
+        | 'playlists'
+        | 'tracks'
+        | 'shows'
+        | 'episodes']: ResponseData;
 };
-
-type PlaylistResponse = {
-    playlists: ResponseData;
-};
-
-type TrackResponse = {
-    tracks: ResponseData;
-};
-
-type ShowResponse = {
-    shows: ResponseData;
-};
-
-type EpisodeResponse = {
-    episodes: ResponseData;
-};
-
-type ArtistResponse = {
-    artists: ResponseData;
-};
-
-type SearchReturnedValue =
-    | AlbumResponse
-    | PlaylistResponse
-    | ArtistResponse
-    | TrackResponse
-    | ShowResponse
-    | EpisodeResponse;
 
 // Search Function
 const baseUrl: string = 'https://api.spotify.com/v1/search';
