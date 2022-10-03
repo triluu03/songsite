@@ -10,7 +10,7 @@ export type SearchType =
     | 'episode';
 
 // the response data config in search
-export type ResponseData = {
+export interface ResponseData {
     href: string;
     items: Array<object>;
     limit: number;
@@ -18,7 +18,7 @@ export type ResponseData = {
     offset: number;
     previous: string;
     total: number;
-};
+}
 
 export type SearchReturnedValue = {
     [type in

@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 
 import { useAppDispatch, useAppSelector } from '../hooks';
 
-import { searchAnything } from '../reducers/searchReducer';
+import { searchAnything, setSearchValue } from '../reducers/searchReducer';
 import { SearchType, SearchReturnedValue } from '../service/searchService';
 
 import SearchResults from './SearchResults';
@@ -62,8 +62,20 @@ const SearchInput = ({
         }
     };
 
+    const cancel = (): void => {
+        setSearch('');
+        dispatch(setSearchValue({}));
+    };
+
     return (
-        <Box sx={{ width: '100vw', height: '100vh', bgcolor: 'primary.main' }}>
+        <Box
+            sx={{
+                width: '100vw',
+                height: 'auto',
+                minHeight: '100vh',
+                bgcolor: 'primary.main',
+            }}
+        >
             <form onSubmit={submit}>
                 <TextField
                     placeholder={`Type in your favorite ${searchType}`}
@@ -93,7 +105,7 @@ const SearchInput = ({
                 <Button
                     size='large'
                     color='warning'
-                    onClick={() => setSearch('')}
+                    onClick={cancel}
                     sx={{ fontSize: '1.25em' }}
                     type='button'
                 >
