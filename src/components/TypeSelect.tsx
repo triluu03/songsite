@@ -80,8 +80,18 @@ const TypeSelect = ({ setSearch }: Props): JSX.Element => {
                     size='large'
                     color='secondary'
                     variant='outlined'
-                    sx={{ m: '2%', fontSize: '1.25em' }}
+                    sx={{
+                        m: '2%',
+                        fontSize: '1.25em',
+                        ':disabled': {
+                            color: 'secondary.main',
+                            borderColor: 'secondary.main',
+                            border: 0.35,
+                            opacity: 0.35,
+                        },
+                    }}
                     onClick={() => setSearch('show')}
+                    disabled
                 >
                     Show
                 </Button>
@@ -89,8 +99,18 @@ const TypeSelect = ({ setSearch }: Props): JSX.Element => {
                     size='large'
                     color='secondary'
                     variant='outlined'
-                    sx={{ m: '2%', fontSize: '1.25em' }}
+                    sx={{
+                        m: '2%',
+                        fontSize: '1.25em',
+                        ':disabled': {
+                            color: 'secondary.main',
+                            borderColor: 'secondary.main',
+                            border: 0.35,
+                            opacity: 0.35,
+                        },
+                    }}
                     onClick={() => setSearch('episode')}
+                    disabled
                 >
                     Episode
                 </Button>

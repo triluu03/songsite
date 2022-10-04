@@ -109,7 +109,7 @@ const SearchInput = ({
                     sx={{ fontSize: '1.25em' }}
                     type='button'
                 >
-                    cancel
+                    {Object.keys(searchResults).length ? 'back' : 'cancel'}
                 </Button>
             </form>
             {Object.keys(searchResults).length ? (

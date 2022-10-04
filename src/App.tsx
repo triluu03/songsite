@@ -1,6 +1,6 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
-import { useAppDispatch, useAppSelector } from './hooks';
+import { useAppDispatch } from './hooks';
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
@@ -8,12 +8,11 @@ import { ThemeProvider } from '@mui/material';
 import theme from './theme';
 
 import { authorize } from './reducers/tokenReducer';
-// import { searchAnything } from './reducers/searchReducer';
 
 import Navbar from './components/Navbar';
 import About from './components/About';
 import TypeSelect from './components/TypeSelect';
-import Credits from './components/Credits';
+import SearchInput from './components/SearchInput';
 
 const App = (): JSX.Element => {
     const dispatch = useAppDispatch();
@@ -23,19 +22,25 @@ const App = (): JSX.Element => {
 
     const [searchType, setSearchType] = useState<string>('');
 
-    // const token: string = useAppSelector((state) => state.token);
-
     return (
         <BrowserRouter>
             <ThemeProvider theme={theme}>
-                <Navbar />
+                {searchType === '' ? <Navbar /> : null}
                 <Routes>
                     <Route path='/' element={<About />} />
                     <Route
                         path='/search'
-                        element={<TypeSelect setSearch={setSearchType} />}
+                        element={
+                            searchType === '' ? (
+                                <TypeSelect setSearch={setSearchType} />
+                            ) : (
+                                <SearchInput
+                                    searchType={searchType}
+                                    setSearch={setSearchType}
+                                />
+                            )
+                        }
                     />
-                    <Route path='/credits' element={<Credits />} />
                 </Routes>
             </ThemeProvider>
         </BrowserRouter>
