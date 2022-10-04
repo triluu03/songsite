@@ -1,4 +1,4 @@
-import { Box, Typography, Paper, Link } from '@mui/material';
+import { Typography, Box, Paper, Link } from '@mui/material';
 import {
     TableContainer,
     Table,
@@ -9,43 +9,45 @@ import {
 } from '@mui/material';
 
 import { ResultItem } from './types';
+import { ArtistItem } from './ArtistResults';
+
 import { ResponseData } from '../../service/searchService';
 
-export interface ArtistItem extends ResultItem {
-    followers: {
-        href: string | null;
-        total: number;
-    };
-    genres: Array<string>;
-    popularity: number;
-    type: 'artist';
+export interface AlbumItem extends ResultItem {
+    album_type: string;
+    artists: Array<ArtistItem>;
+    available_markets: Array<string>;
+    release_date: string;
+    release_date_precision: string;
+    total_tracks: number;
+    type: 'album';
 }
 
-interface ArtistResponse extends ResponseData {
-    items: Array<ArtistItem>;
+interface AlbumResponse extends ResponseData {
+    items: Array<AlbumItem>;
 }
 
-export type ArtistReturnedValue = {
-    artists: ArtistResponse;
+export type AlbumReturnedValue = {
+    albums: AlbumResponse;
 };
 
 type Props = {
-    searchResults: ArtistReturnedValue;
+    searchResults: AlbumReturnedValue;
 };
 
-const ArtistResults = ({ searchResults }: Props): JSX.Element => {
-    const itemList = searchResults.artists.items;
+const AlbumResults = ({ searchResults }: Props): JSX.Element => {
+    const itemList = searchResults.albums.items;
 
     return (
         <Box sx={{ height: 'auto', width: '95%', pl: '1.5%' }}>
             <TableContainer component={Paper}>
                 <Table
-                    aria-label='artists list'
+                    aria-label='albums list'
                     sx={{
                         bgcolor: 'primary.main',
                         '& th': {
                             color: 'secondary.light',
-                            fontSize: '2em',
+                            fontSize: '1.85em',
                         },
                         '& td': {
                             color: 'info.main',
@@ -56,9 +58,10 @@ const ArtistResults = ({ searchResults }: Props): JSX.Element => {
                     <TableHead>
                         <TableRow>
                             <TableCell>Name</TableCell>
-                            <TableCell>Followers</TableCell>
-                            <TableCell>Popularity</TableCell>
-                            <TableCell>Genres</TableCell>
+                            <TableCell>Artists</TableCell>
+                            <TableCell>Release Date</TableCell>
+                            <TableCell>Total Tracks</TableCell>
+                            <TableCell>Album Type</TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
@@ -75,7 +78,7 @@ const ArtistResults = ({ searchResults }: Props): JSX.Element => {
                                             sx={{
                                                 fontWeight: 'bold',
                                                 ':hover': {
-                                                    color: 'info.dark',
+                                                    color: 'secondary.light',
                                                 },
                                             }}
                                         >
@@ -83,15 +86,29 @@ const ArtistResults = ({ searchResults }: Props): JSX.Element => {
                                         </Typography>
                                     </Link>
                                 </TableCell>
-                                <TableCell>{item.followers.total}</TableCell>
-                                <TableCell>{item.popularity}</TableCell>
                                 <TableCell>
-                                    {item.genres.map((genre) => (
-                                        <Typography id={genre}>
-                                            {genre}
-                                        </Typography>
+                                    {item.artists.map((artist) => (
+                                        <Link
+                                            href={artist.external_urls.spotify}
+                                            target='_blank'
+                                        >
+                                            <Typography
+                                                color='info.main'
+                                                fontSize='1.1em'
+                                                sx={{
+                                                    ':hover': {
+                                                        color: 'secondary.light',
+                                                    },
+                                                }}
+                                            >
+                                                {artist.name}
+                                            </Typography>
+                                        </Link>
                                     ))}
                                 </TableCell>
+                                <TableCell>{item.release_date}</TableCell>
+                                <TableCell>{item.total_tracks}</TableCell>
+                                <TableCell>{item.album_type}</TableCell>
                             </TableRow>
                         ))}
                     </TableBody>
@@ -101,4 +118,4 @@ const ArtistResults = ({ searchResults }: Props): JSX.Element => {
     );
 };
 
-export default ArtistResults;
+export default AlbumResults;
