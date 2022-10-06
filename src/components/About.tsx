@@ -1,194 +1,245 @@
-import {
-    ScrollContainer,
-    ScrollPage,
-    Animator,
-    batch,
-    Animation,
-} from 'react-scroll-motion';
-
-import { Fade, FadeIn } from 'react-scroll-motion';
-import { Sticky, StickyIn } from 'react-scroll-motion';
-import { Move, MoveIn, MoveOut } from 'react-scroll-motion';
-import { ZoomIn } from 'react-scroll-motion';
-
 import { Box, Link, Typography } from '@mui/material';
+
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
-import { SiTypescript, SiReact } from 'react-icons/si';
 
 const About = (): JSX.Element => {
     const styles = {
-        skillBox: {
-            width: 150,
-            height: 150,
+        contactIcon: {
+            m: 1,
+            width: 70,
+            height: 70,
             borderRadius: '50%',
-            border: 2,
-            borderColor: 'secondary.main',
-            mb: 1,
+            border: 1,
+            bgcolor: 'secondary.main',
             display: 'flex',
             justifyContent: 'center',
             flexDirection: 'column',
             alignItems: 'center',
             transitionDuration: '0.5s',
         },
+        searchTypeContainer: {
+            display: 'flex',
+            justifyContent: 'center',
+            border: 1,
+            borderColor: 'secondary.main',
+            borderRadius: '16px',
+            p: 1,
+            m: 1,
+            transitionDuration: '0.5s',
+            ':hover': {
+                bgcolor: 'secondary.main',
+            },
+        },
     };
-
-    const ZoomInScrollOut: Animation = batch(StickyIn(), FadeIn(), ZoomIn());
-    const FadeUp: Animation = batch(Fade(), Move(), Sticky());
 
     return (
         <Box
             sx={{
                 bgcolor: 'primary.main',
                 height: 'auto',
+                minHeight: '100vh',
                 width: '100vw',
-                display: 'flex',
-                flexDirection: 'column',
-                justifyContent: 'center',
-                alignItems: 'center',
-                pb: '5%',
+                position: 'relative',
             }}
         >
-            <ScrollContainer>
-                <ScrollPage>
-                    <Animator
-                        animation={batch(Fade(), Sticky(), MoveOut(0, -100))}
+            <Box
+                sx={{
+                    width: '100%',
+                    height: '70vh',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                }}
+            >
+                <Typography color='secondary.light' variant='h5'>
+                    Welcome to Songsite!
+                </Typography>
+                <Typography
+                    color='info.main'
+                    variant='h3'
+                    sx={{ maxWidth: '50%', textAlign: 'center' }}
+                >
+                    Songsite helps you search for your favorite artists, songs,
+                    or albums using Spotify API.
+                </Typography>
+            </Box>
+            <Box
+                sx={{
+                    minHeight: '50vh',
+                    height: 'auto',
+                    width: '100%',
+                    bgcolor: 'primary.main',
+                    display: 'flex',
+                    justifyContent: 'center',
+                }}
+            >
+                <Box
+                    sx={{
+                        width: '45%',
+                        mr: '6%',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        justifyContent: 'center',
+                    }}
+                >
+                    <Typography variant='h3' color='secondary.light'>
+                        Basic Features
+                    </Typography>
+                    <Typography
+                        variant='body1'
+                        color='info.main'
+                        fontSize='1.5em'
+                        sx={{ mt: 2 }}
                     >
-                        <Typography variant='h3' color='secondary.main'>
-                            Welcome to Songsite!
-                        </Typography>
-                    </Animator>
-                </ScrollPage>
-                <ScrollPage>
-                    <Box
-                        sx={{
-                            textAlign: 'center',
-                            width: '50%',
-                        }}
+                        Songsite is a web application that allows you to search
+                        for information about artists, albums, playlists, or
+                        tracks.
+                    </Typography>
+                    <Typography
+                        variant='body1'
+                        color='info.main'
+                        fontSize='1.5em'
+                        sx={{ mt: 2 }}
                     >
-                        <Animator animation={ZoomInScrollOut}>
-                            <Typography variant='h3' color='info.main'>
-                                Songsite helps you search for your favorite
-                                artists, songs, or albums using Spotify API.
+                        Click on the search bar above, choose what you want to
+                        look for, and type in what you're thinking of.
+                    </Typography>
+                </Box>
+                <Box
+                    sx={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                        justifyContent: 'center',
+                    }}
+                >
+                    <Link href='/search' sx={{ textDecoration: 'none' }}>
+                        <Box sx={{ ...styles.searchTypeContainer }}>
+                            <Typography
+                                variant='h4'
+                                color='info.main'
+                                fontSize='2em'
+                            >
+                                Artists
                             </Typography>
-                        </Animator>
-                    </Box>
-                </ScrollPage>
-                <ScrollPage>
-                    <Animator animation={FadeUp}>
-                        <Typography variant='h3' color='secondary.main'>
-                            Songsite is built by{' '}
-                            <Link
-                                href='https://www.linkedin.com/in/triluu03/'
-                                color='secondary.main'
-                                target='_blank'
+                        </Box>
+                    </Link>
+                    <Link href='/search' sx={{ textDecoration: 'none' }}>
+                        <Box sx={{ ...styles.searchTypeContainer }}>
+                            <Typography
+                                variant='h4'
+                                color='info.main'
+                                fontSize='2em'
                             >
-                                Tri Luu
-                            </Link>{' '}
-                            using:
-                        </Typography>
-                    </Animator>
-                </ScrollPage>
-                <ScrollPage>
-                    <Box
-                        sx={{
-                            display: 'flex',
-                            flexDirection: 'row',
-                            justifyContent: 'center',
-                            alignItems: 'center',
-                            height: '90%',
-                            width: '100vw',
-                        }}
+                                Albums
+                            </Typography>
+                        </Box>
+                    </Link>
+                    <Link href='/search' sx={{ textDecoration: 'none' }}>
+                        <Box sx={{ ...styles.searchTypeContainer }}>
+                            <Typography
+                                variant='h4'
+                                color='info.main'
+                                fontSize='2em'
+                            >
+                                Playlists
+                            </Typography>
+                        </Box>
+                    </Link>
+                    <Link href='/search' sx={{ textDecoration: 'none' }}>
+                        <Box sx={{ ...styles.searchTypeContainer }}>
+                            <Typography
+                                variant='h4'
+                                color='info.main'
+                                fontSize='2em'
+                            >
+                                Tracks
+                            </Typography>
+                        </Box>
+                    </Link>
+                </Box>
+            </Box>
+            <Box
+                sx={{
+                    width: '100%',
+                    height: 'auto',
+                    minHeight: '50vh',
+                    display: 'flex',
+                    justifyContent: 'center',
+                }}
+            >
+                <Box
+                    sx={{
+                        width: '55%',
+                        height: 'auto',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        justifyContent: 'center',
+                        mr: '7%',
+                    }}
+                >
+                    <Typography variant='h3' color='secondary.light'>
+                        Credits
+                    </Typography>
+                    <Typography
+                        variant='body1'
+                        color='info.main'
+                        fontSize='1.5em'
+                        sx={{ mt: 2 }}
                     >
-                        <Animator
-                            animation={batch(
-                                MoveIn(-1000, 0),
-                                MoveOut(-1000, 0)
-                            )}
+                        This project was developed by{' '}
+                        <Link
+                            href='https://triluu03.github.io/personal-portfolio/'
+                            target='_blank'
+                            sx={{ color: 'secondary.light' }}
                         >
-                            <Box
-                                sx={{
-                                    ...styles.skillBox,
-                                    ':hover': {
-                                        bgcolor: '#61dafb',
-                                        transform: 'rotate(360deg)',
-                                        border: 0,
-                                    },
-                                }}
-                            >
-                                <SiReact
-                                    style={{ color: 'white' }}
-                                    fontSize='3em'
-                                />
-                            </Box>
-                        </Animator>
-                        <Animator
-                            animation={batch(MoveIn(1000, 0), MoveOut(1000, 0))}
+                            Tri Luu.
+                        </Link>
+                    </Typography>
+                    <Typography
+                        variant='h3'
+                        color='secondary.light'
+                        sx={{ mt: 3 }}
+                    >
+                        Contact me
+                    </Typography>
+                    <Box sx={{ display: 'flex' }}>
+                        <Box
+                            sx={{
+                                ...styles.contactIcon,
+                                ':hover': {
+                                    bgcolor: '#4d8fac',
+                                    transform: 'rotate(360deg)',
+                                },
+                            }}
                         >
-                            <Box
-                                sx={{
-                                    ...styles.skillBox,
-                                    ':hover': {
-                                        bgcolor: '#007acc',
-                                        transform: 'rotate(360deg)',
-                                        border: 0,
-                                    },
-                                }}
-                            >
-                                <SiTypescript
-                                    style={{ color: 'white' }}
-                                    fontSize='3em'
-                                />
-                            </Box>
-                        </Animator>
-                    </Box>
-                </ScrollPage>
-                <ScrollPage>
-                    <Animator animation={batch(Fade(), Sticky())}>
-                        <Typography variant='h3' color='info.main'>
-                            <Link href='/search' color='info.main'>
-                                Click here
-                            </Link>{' '}
-                            to start using!
-                        </Typography>
-                        <Typography variant='h3' color='info.main'>
-                            Contact Me:
-                        </Typography>
-                        <Typography>
-                            <a
-                                href='https://www.linkedin.com/in/triluu03/'
-                                target='_blank'
-                                rel='noreferrer'
-                            >
-                                <LinkedInIcon
-                                    color='info'
-                                    sx={{
-                                        fontSize: '5em',
-                                        ':hover': {
-                                            color: 'secondary.main',
-                                        },
-                                    }}
-                                />
-                            </a>{' '}
-                            <a
+                            <Link
                                 href='https://github.com/triluu03'
                                 target='_blank'
-                                rel='noreferrer'
                             >
-                                <GitHubIcon
-                                    color='info'
-                                    sx={{
-                                        fontSize: '5em',
-                                        ':hover': {
-                                            color: 'secondary.main',
-                                        },
-                                    }}
-                                />
-                            </a>
-                        </Typography>
-                    </Animator>
-                </ScrollPage>
-            </ScrollContainer>
+                                <GitHubIcon fontSize='large' />
+                            </Link>
+                        </Box>
+                        <Box
+                            sx={{
+                                ...styles.contactIcon,
+                                ':hover': {
+                                    bgcolor: '#00a0dc',
+                                    transform: 'rotate(360deg)',
+                                },
+                            }}
+                        >
+                            <Link
+                                href='https://www.linkedin.com/in/triluu03/'
+                                target='_blank'
+                            >
+                                <LinkedInIcon fontSize='large' />
+                            </Link>
+                        </Box>
+                    </Box>
+                </Box>
+            </Box>
         </Box>
     );
 };
