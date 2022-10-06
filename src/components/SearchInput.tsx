@@ -34,7 +34,6 @@ const SearchInput = ({
             dispatch(
                 searchAnything(searchType as SearchType, searchQuery, token)
             );
-            setSearchQuery('');
         } catch (error) {
             navigate('/search');
             console.log(error);
