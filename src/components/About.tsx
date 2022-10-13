@@ -114,7 +114,10 @@ const About = (): JSX.Element => {
                         justifyContent: 'center',
                     }}
                 >
-                    <Link href='/search' sx={{ textDecoration: 'none' }}>
+                    <Link
+                        href='/songsite/search'
+                        sx={{ textDecoration: 'none' }}
+                    >
                         <Box sx={{ ...styles.searchTypeContainer }}>
                             <Typography
                                 variant='h4'
@@ -125,7 +128,10 @@ const About = (): JSX.Element => {
                             </Typography>
                         </Box>
                     </Link>
-                    <Link href='/search' sx={{ textDecoration: 'none' }}>
+                    <Link
+                        href='/songsite/search'
+                        sx={{ textDecoration: 'none' }}
+                    >
                         <Box sx={{ ...styles.searchTypeContainer }}>
                             <Typography
                                 variant='h4'
@@ -136,7 +142,10 @@ const About = (): JSX.Element => {
                             </Typography>
                         </Box>
                     </Link>
-                    <Link href='/search' sx={{ textDecoration: 'none' }}>
+                    <Link
+                        href='/songsite/search'
+                        sx={{ textDecoration: 'none' }}
+                    >
                         <Box sx={{ ...styles.searchTypeContainer }}>
                             <Typography
                                 variant='h4'
@@ -147,7 +156,10 @@ const About = (): JSX.Element => {
                             </Typography>
                         </Box>
                     </Link>
-                    <Link href='/search' sx={{ textDecoration: 'none' }}>
+                    <Link
+                        href='/songsite/search'
+                        sx={{ textDecoration: 'none' }}
+                    >
                         <Box sx={{ ...styles.searchTypeContainer }}>
                             <Typography
                                 variant='h4'
