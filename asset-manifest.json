@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.js": "/songsite/static/js/main.f1df8550.js",
+    "main.js": "/songsite/static/js/main.1488dcf9.js",
     "index.html": "/songsite/index.html",
-    "main.f1df8550.js.map": "/songsite/static/js/main.f1df8550.js.map"
+    "main.1488dcf9.js.map": "/songsite/static/js/main.1488dcf9.js.map"
   },
   "entrypoints": [
-    "static/js/main.f1df8550.js"
+    "static/js/main.1488dcf9.js"
   ]
 }
