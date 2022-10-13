@@ -45,7 +45,7 @@ const Navbar = (): JSX.Element => {
                         size='large'
                         sx={{ fontSize: '1.25em' }}
                     >
-                        <Link to='/' style={styles.link}>
+                        <Link to='/songsite/' style={styles.link}>
                             <b>About</b>
                         </Link>
                     </Button>
@@ -55,7 +55,7 @@ const Navbar = (): JSX.Element => {
                         size='large'
                         sx={{ fontSize: '1.25em', mr: '4%' }}
                     >
-                        <Link to='/search' style={styles.link}>
+                        <Link to='/songsite/search' style={styles.link}>
                             <b>Search</b>
                         </Link>
                     </Button>
