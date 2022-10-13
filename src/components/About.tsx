@@ -1,4 +1,5 @@
 import { Box, Link, Typography } from '@mui/material';
+import { Link as RouterLink } from 'react-router-dom';
 
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
@@ -114,9 +115,9 @@ const About = (): JSX.Element => {
                         justifyContent: 'center',
                     }}
                 >
-                    <Link
-                        href='/songsite/search'
-                        sx={{ textDecoration: 'none' }}
+                    <RouterLink
+                        to='/songsite/search'
+                        style={{ textDecoration: 'none' }}
                     >
                         <Box sx={{ ...styles.searchTypeContainer }}>
                             <Typography
@@ -127,10 +128,10 @@ const About = (): JSX.Element => {
                                 Artists
                             </Typography>
                         </Box>
-                    </Link>
-                    <Link
-                        href='/songsite/search'
-                        sx={{ textDecoration: 'none' }}
+                    </RouterLink>
+                    <RouterLink
+                        to='/songsite/search'
+                        style={{ textDecoration: 'none' }}
                     >
                         <Box sx={{ ...styles.searchTypeContainer }}>
                             <Typography
@@ -141,10 +142,10 @@ const About = (): JSX.Element => {
                                 Albums
                             </Typography>
                         </Box>
-                    </Link>
-                    <Link
-                        href='/songsite/search'
-                        sx={{ textDecoration: 'none' }}
+                    </RouterLink>
+                    <RouterLink
+                        to='/songsite/search'
+                        style={{ textDecoration: 'none' }}
                     >
                         <Box sx={{ ...styles.searchTypeContainer }}>
                             <Typography
@@ -155,10 +156,10 @@ const About = (): JSX.Element => {
                                 Playlists
                             </Typography>
                         </Box>
-                    </Link>
-                    <Link
-                        href='/songsite/search'
-                        sx={{ textDecoration: 'none' }}
+                    </RouterLink>
+                    <RouterLink
+                        to='/songsite/search'
+                        style={{ textDecoration: 'none' }}
                     >
                         <Box sx={{ ...styles.searchTypeContainer }}>
                             <Typography
@@ -169,7 +170,7 @@ const About = (): JSX.Element => {
                                 Tracks
                             </Typography>
                         </Box>
-                    </Link>
+                    </RouterLink>
                 </Box>
             </Box>
             <Box
