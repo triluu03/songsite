@@ -27,9 +27,9 @@ const App = (): JSX.Element => {
             <ThemeProvider theme={theme}>
                 {searchType === '' ? <Navbar /> : null}
                 <Routes>
-                    <Route path='/' element={<About />} />
+                    <Route path='/songsite/' element={<About />} />
                     <Route
-                        path='/search'
+                        path='/songsite/search'
                         element={
                             searchType === '' ? (
                                 <TypeSelect setSearch={setSearchType} />
