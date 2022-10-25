@@ -201,7 +201,7 @@ const About = (): JSX.Element => {
                         fontSize='1.5em'
                         sx={{ mt: 2 }}
                     >
-                        This project was developed by{' '}
+                        This app was developed by{' '}
                         <Link
                             href='https://triluu03.github.io/personal-portfolio/'
                             target='_blank'
@@ -218,38 +218,38 @@ const About = (): JSX.Element => {
                         Contact me
                     </Typography>
                     <Box sx={{ display: 'flex' }}>
-                        <Box
-                            sx={{
-                                ...styles.contactIcon,
-                                ':hover': {
-                                    bgcolor: '#4d8fac',
-                                    transform: 'rotate(360deg)',
-                                },
-                            }}
+                        <Link
+                            href='https://github.com/triluu03'
+                            target='_blank'
                         >
-                            <Link
-                                href='https://github.com/triluu03'
-                                target='_blank'
+                            <Box
+                                sx={{
+                                    ...styles.contactIcon,
+                                    ':hover': {
+                                        bgcolor: '#4d8fac',
+                                        transform: 'rotate(360deg)',
+                                    },
+                                }}
                             >
                                 <GitHubIcon fontSize='large' />
-                            </Link>
-                        </Box>
-                        <Box
-                            sx={{
-                                ...styles.contactIcon,
-                                ':hover': {
-                                    bgcolor: '#00a0dc',
-                                    transform: 'rotate(360deg)',
-                                },
-                            }}
+                            </Box>
+                        </Link>
+                        <Link
+                            href='https://www.linkedin.com/in/triluu03/'
+                            target='_blank'
                         >
-                            <Link
-                                href='https://www.linkedin.com/in/triluu03/'
-                                target='_blank'
+                            <Box
+                                sx={{
+                                    ...styles.contactIcon,
+                                    ':hover': {
+                                        bgcolor: '#00a0dc',
+                                        transform: 'rotate(360deg)',
+                                    },
+                                }}
                             >
                                 <LinkedInIcon fontSize='large' />
-                            </Link>
-                        </Box>
+                            </Box>
+                        </Link>
                     </Box>
                 </Box>
             </Box>
