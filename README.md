@@ -8,4 +8,6 @@ Songsite allows user to search for their favorite artists, songs, albums, or pla
 ## You guys can check the app with:
 - Github Pages: https://triluu03.github.io/songsite 
 
+### Here is a preview of the app!
 
+![songsite_gif](https://user-images.githubusercontent.com/91616223/197544409-b45c8b55-7549-4c8e-b79b-b1ff080d373b.gif)
